@@ -26,6 +26,10 @@ test('test that App component renders Task', () => {
   fireEvent.change(inputTask, { target: { value: "History Test"}});
   fireEvent.change(inputDate, { target: { value: dueDate}});
   fireEvent.click(element);
+  
+  // Log the rendered output to inspect
+  console.log(document.body.innerHTML);
+
   const check = screen.getByText(/History Test/i);
   const checkDate = screen.getByText(new RegExp(dueDate, "i"));
   expect(check).toBeInTheDocument();
