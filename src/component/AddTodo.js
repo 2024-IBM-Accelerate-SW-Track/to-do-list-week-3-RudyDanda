@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { Button, TextField } from "@mui/material";
 import { DesktopDatePicker , LocalizationProvider} from '@mui/x-date-pickers';
 import { AdapterDateFns } from '@mui/x-date-pickers/AdapterDateFns';
+import { format } from 'date-fns';
 
 class AddTodo extends Component {
   // Create a local react state of the this component with both content date property set to nothing.
@@ -25,8 +26,9 @@ class AddTodo extends Component {
 
   // The handleChangeDueDate function updates the react state for the due date 
   handleChangeDueDate = (date) => {
+    const formatDate = format(new Date(date), 'MM/dd/yyyy')
     this.setState({
-      due: new Date(date).toLocaleDateString()
+      due: formatDate
     });
   };
 
